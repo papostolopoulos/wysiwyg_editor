@@ -13,49 +13,7 @@
   This is the area for the text editor <i class="fa fa-align-justify" aria-hidden="true"></i>
 
   <div>
-    <button id="buttonBold" title="bold"><i class="fa fa-2x fa-bold" aria-hidden="true"></i></button>
-    <button id="buttonItalic" title="italic"><i class="fa fa-2x fa-italic" aria-hidden="true"></i></button>
-    <button id="buttonUnderline" title="underline"><i class="fa fa-2x fa-underline" aria-hidden="true"></i></button>
-    <button id="buttonStrikethrough" title="strikethrough"><i class="fa fa-2x fa-strikethrough" aria-hidden="true"></i></button>
-    <button id="buttonJustifyLeft" title="align left"><i class="fa fa-2x fa-align-left" aria-hidden="true"></i></button>
-    <button id="buttonJustifyCenter" title="align center"><i class="fa fa-2x fa-align-center" aria-hidden="true"></i></button>
-    <button id="buttonJustifyRight" title="align right"><i class="fa fa-2x fa-align-right" aria-hidden="true"></i></button>
-    <button id="buttonJustifyFull" title="justify"><i class="fa fa-2x fa-align-justify" aria-hidden="true"></i></button>
-    <button id="buttonCut" title="cut"><i class="fa fa-2x fa-cut" aria-hidden="true"></i></button>
-    <button id="buttonCopy" title="justify"><i class="fa fa-2x fa-copy" aria-hidden="true"></i></button>
-    <button id="buttonPaste" title="paste"><i class="fa fa-2x fa-clipboard" aria-hidden="true"></i></button>
-    <button id="buttonIndent" title="indent"><i class="fa fa-2x fa-indent" aria-hidden="true"></i></button>
-    <button id="buttonOutdent" title="outdent"><i class="fa fa-2x fa-outdent" aria-hidden="true"></i></button>
-    <button id="buttonSubscript" title="subscript"><i class="fa fa-2x fa-subscript" aria-hidden="true"></i></button>
-    <button id="buttonSuperscript" title="superscript"><i class="fa fa-2x fa-superscript" aria-hidden="true"></i></button>
-    <button id="buttonUndo" title="undo"><i class="fa fa-2x fa-undo" aria-hidden="true"></i></button>
-    <button id="buttonRedo" title="redo"><i class="fa fa-2x fa-repeat" aria-hidden="true"></i></button>
-    <button id="buttonInsertUnorderedList" title="unordered list"><i class="fa fa-2x fa-list-ul" aria-hidden="true"></i></button>
-    <button id="buttonInsertOrderedList" title="ordered list"><i class="fa fa-2x fa-list-ol" aria-hidden="true"></i></button>
-    <button id="buttonInsertParagraph" title="insert paragraph"><i class="fa fa-2x fa-paragraph" aria-hidden="true"></i></button>
-    <select name="" id="selectParagraphStyle">
-      <option value="h1">Heading 1</option>
-      <option value="h2">Heading 2</option>
-      <option value="h3">Heading 3</option>
-      <option value="h4">Heading 4</option>
-      <option value="h5">Heading 5</option>
-      <option value="h6">Heading 6</option>
-      <option value="p">Paragraph</option>
-      <option value="mark">Marked</option>
-      <option value="q">Quote</option>
-      <option value="blockquote">Blockquote</option>
-      <option value="address">Address</option>
-      <option value="cite">Cite</option>
-      <option value="code">Code</option>
-      <option value="samp">Samp</option>
-      <option value="var">Variable</option>
-    </select>
-    <button id="buttonHorizontalRule" title="horizontal rule"><i class="fa fa-2x fa-window-minimize" aria-hidden="true"></i></button>
-    <button id="buttonInsertLink" title="insert link"><i class="fa fa-2x fa-link" aria-hidden="true"></i></button>
-    <button id="buttonRemoveLink" title="remove link"><i class="fa fa-2x fa-unlink" aria-hidden="true"></i></button>
-    <button id="buttonSourceCode" title="edit source code"><i class="fa fa-2x fa-code" aria-hidden="true"></i></button>
-    <button id="buttonToggleEdit" title="toggle edit"><i class="fa fa-2x fa-toggle-off" aria-hidden="true"></i></button>
-    <select name="" id="selectFontStyle">
+    <select name="" id="selectFontStyle" title="font style">
       <option value="Arial">Arial</option>
       <option value="Comic Sans MS">Comic Sans MS</option>
       <option value="Courier">Courier</option>
@@ -64,7 +22,7 @@
       <option value="Times New Roman">Times New Roman</option>
       <option value="Verdana">Verdana</option>
     </select>
-    <select name="" id="selectFontSize">
+    <select name="" id="selectFontSize" title="font size">
       <option value="1">Size 1</option>
       <option value="2">Size 2</option>
       <option value="3">Size 3</option>
@@ -73,16 +31,55 @@
       <option value="6">Size 6</option>
       <option value="7">Size 7</option>
     </select>
-    <form action="">
-      Foreground color: <input id="inputFontColor" type="color">
-      <button type="submit">Apply</button>
-    </form>
-    <form action="">
-      Background color: <input id="inputBackgroundColor" type="color">
-      <button type="submit">Apply</button>
-    </form>
-    <button id="buttonInsertImage" title="insert Image"><i class="fa fa-2x fa-file-image-o" aria-hidden="true"></i></button>
-    <button id="buttonSelectAll" title="select all">select all</button>
+    <select name="" id="selectParagraphStyle">
+      <option value="h1">Heading 1</option>
+      <option value="h2">Heading 2</option>
+      <option value="h3">Heading 3</option>
+      <option value="h4">Heading 4</option>
+      <option value="h5">Heading 5</option>
+      <option value="h6">Heading 6</option>
+      <option value="p">Paragraph</option>
+      <option value="blockquote">Blockquote</option>
+      <option value="address">Address</option>
+    </select>
+    <button id="buttonBold" title="bold"><i class="fa fa-2x fa-bold" aria-hidden="true"></i></button>
+    <button id="buttonItalic" title="italic"><i class="fa fa-2x fa-italic" aria-hidden="true"></i></button>
+    <button id="buttonUnderline" title="underline"><i class="fa fa-2x fa-underline" aria-hidden="true"></i></button>
+    <button id="buttonStrikethrough" title="strikethrough"><i class="fa fa-2x fa-strikethrough" aria-hidden="true"></i></button>
+    <button id="buttonJustifyLeft" title="align left"><i class="fa fa-2x fa-align-left" aria-hidden="true"></i></button>
+    <button id="buttonJustifyCenter" title="align center"><i class="fa fa-2x fa-align-center" aria-hidden="true"></i></button>
+    <button id="buttonJustifyRight" title="align right"><i class="fa fa-2x fa-align-right" aria-hidden="true"></i></button>
+    <button id="buttonJustifyFull" title="justify"><i class="fa fa-2x fa-align-justify" aria-hidden="true"></i></button>
+    <button id="buttonIndent" title="indent"><i class="fa fa-2x fa-indent" aria-hidden="true"></i></button>
+    <button id="buttonOutdent" title="outdent"><i class="fa fa-2x fa-outdent" aria-hidden="true"></i></button>
+    <button id="buttonSubscript" title="subscript"><i class="fa fa-2x fa-subscript" aria-hidden="true"></i></button>
+    <button id="buttonSuperscript" title="superscript"><i class="fa fa-2x fa-superscript" aria-hidden="true"></i></button>
+    <button id="buttonInsertUnorderedList" title="unordered list"><i class="fa fa-2x fa-list-ul" aria-hidden="true"></i></button>
+    <button id="buttonInsertOrderedList" title="ordered list"><i class="fa fa-2x fa-list-ol" aria-hidden="true"></i></button>
+    <br>
+    <button id="buttonCut" title="cut"><i class="fa fa-2x fa-cut" aria-hidden="true"></i></button>
+    <button id="buttonCopy" title="copy"><i class="fa fa-2x fa-copy" aria-hidden="true"></i></button>
+    <button id="buttonPaste" title="paste"><i class="fa fa-2x fa-clipboard" aria-hidden="true"></i></button>
+    <button id="buttonSelectAll" title="select all"><i class="fa fa-2x fa-check-square-o" aria-hidden="true"></i></button>
+    <button id="buttonUndo" title="undo"><i class="fa fa-2x fa-undo" aria-hidden="true"></i></button>
+    <button id="buttonRedo" title="redo"><i class="fa fa-2x fa-repeat" aria-hidden="true"></i></button>
+    <br>
+    <button id="buttonInsertParagraph" title="insert paragraph"><i class="fa fa-2x fa-paragraph" aria-hidden="true"></i></button>
+    <button id="buttonHorizontalRule" title="horizontal rule"><i class="fa fa-2x fa-window-minimize" aria-hidden="true"></i></button>
+    <button id="buttonInsertLink" title="insert link"><i class="fa fa-2x fa-link" aria-hidden="true"></i></button>
+    <button id="buttonRemoveLink" title="remove link"><i class="fa fa-2x fa-unlink" aria-hidden="true"></i></button>
+    <button id="buttonInsertImage" title="insert Image"><i class="fa fa-2x fa-picture-o" aria-hidden="true"></i></button>
+    <button id="buttonInsertOnlineImage" title="insert Online Image"><i class="fa fa-2x fa-file-image-o" aria-hidden="true"></i></button>
+    <br>
+    Font color: <input id="inputFontColor" type="color" color="#000000">
+    Background color: <input id="inputBackgroundColor" type="color">
+    Highlight color: <input id="inputHighlightColor" type="color">
+    <br>
+    <button id="buttonInlineSourceCode" title="insert raw HTML"><i class="fa fa-2x fa-code" aria-hidden="true"></i></button>
+    <button id="buttonSourceCode" title="edit full document in HTML"><i class="fa fa-2x fa-file-code-o" aria-hidden="true"></i></button>
+    <button id="buttonToggleEdit" title="turn editor off/on"><i id="toggleIcon" class="fa fa-2x fa-toggle-on" aria-hidden="true"></i></button>
+
+
 
 
 
@@ -91,13 +88,6 @@
   <iframe name="richTextField" id="richTextField">
 
   </iframe>
-
-  <!-- <script type="text/javascript">
-
-  function enableEditMode () {
-    richTextField.document.designMode = "On";
-  }
-  </script> -->
 
   <script type="text/javascript" src="assets/scripts/scripts.js"></script>
 

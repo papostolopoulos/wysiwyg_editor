@@ -1,4 +1,4 @@
-window.onload = () => {
+// window.onload = () => {
 console.log("Inside the scripts file");
 
 
@@ -28,15 +28,17 @@ let selectParagraphStyle = document.getElementById("selectParagraphStyle")
 let buttonHorizontalRule = document.getElementById("buttonHorizontalRule")
 let buttonInsertLink = document.getElementById("buttonInsertLink");
 let buttonRemoveLink = document.getElementById("buttonRemoveLink");
+let buttonInlineSourceCode = document.getElementById("buttonInlineSourceCode");
 let buttonSourceCode = document.getElementById("buttonSourceCode");
 let buttonToggleEdit = document.getElementById("buttonToggleEdit");
+let toggleIcon = document.getElementById('toggleIcon');
 let selectFontStyle = document.getElementById("selectFontStyle");
-
 let selectFontSize = document.getElementById("selectFontSize");
-
 let inputFontColor = document.getElementById("inputFontColor");
 let inputBackgroundColor = document.getElementById("inputBackgroundColor");
+let inputHighlightColor = document.getElementById("inputHighlightColor");
 let buttonInsertImage = document.getElementById("buttonInsertImage");
+let buttonInsertOnlineImage = document.getElementById('buttonInsertOnlineImage');
 let buttonSelectAll = document.getElementById("buttonSelectAll");
 
 
@@ -45,38 +47,41 @@ let buttonSelectAll = document.getElementById("buttonSelectAll");
 
 
 //EVENT LISTENERS
-buttonBold.addEventListener("click", ()=>{execCmd('bold')});
-buttonItalic.addEventListener("click", ()=>{execCmd('italic')});
-buttonUnderline.addEventListener("click", ()=>{execCmd('underline')});
-buttonStrikethrough.addEventListener("click", ()=>{execCmd('strikethrough')});
-buttonJustifyLeft.addEventListener("click", ()=>{execCmd('justifyLeft')});
-buttonJustifyCenter.addEventListener("click", ()=>{execCmd('justifyCenter')});
-buttonJustifyRight.addEventListener("click", ()=>{execCmd('justifyRight')});
-buttonJustifyFull.addEventListener("click", ()=>{execCmd('justifyFull')});
-buttonCut.addEventListener("click", ()=>{execCmd('cut')});
-buttonCopy.addEventListener("click", ()=>{execCmd('copy')});
-buttonPaste.addEventListener("click", ()=>{execCmd('paste')}); //This has a problem
-buttonIndent.addEventListener("click", ()=>{execCmd('indent')});
-buttonOutdent.addEventListener("click", ()=>{execCmd('outdent')});
-buttonSubscript.addEventListener("click", ()=>{execCmd('subscript')});
-buttonSuperscript.addEventListener("click", ()=>{execCmd('superscript')});
-buttonUndo.addEventListener("click", ()=>{execCmd('undo')});
-buttonRedo.addEventListener("click", ()=>{execCmd('redo')});
-buttonInsertUnorderedList.addEventListener("click", ()=>{execCmd('insertUnorderedList')});
-buttonInsertOrderedList.addEventListener("click", ()=>{execCmd('insertOrderedList')});
-buttonInsertParagraph.addEventListener("click", ()=>{execCmd('insertParagraph')});
-selectParagraphStyle.addEventListener("change", ()=>{execCmdArg('formatBlock', selectParagraphStyle[selectParagraphStyle.selectedIndex].getAttribute('value'))});
-buttonHorizontalRule.addEventListener("click", ()=>{execCmd('insertHorizontalRule')});
-buttonInsertLink.addEventListener("click", ()=>{execCmd("createLink")}); //does this have the option of having an additional prompt window where the url is defined?
-buttonRemoveLink.addEventListener("click", ()=>{execCmd("unlink")});
-buttonSourceCode.addEventListener("click", ()=>{execCmd("insertHTML")}); //Need to check on this. codepen has it with a prompt where the user can enter raw html
-buttonToggleEdit.addEventListener("click", ()=>{execCmd("styleWithCSS")}); //Not sure about this one and if it is right
-selectFontStyle.addEventListener("change", ()=>{execCmdArg("fontName", selectFontStyle[selectFontStyle.selectedIndex].getAttribute('value'))});
-selectFontSize.addEventListener("change", ()=>{execCmdArg("fontSize", selectFontSize[selectFontSize.selectedIndex].getAttribute('value'))});
-inputFontColor.addEventListener("click", ()=>{execCmd("foreColor")}); //Need to work on this. Will this come in the function through a form?
-inputBackgroundColor.addEventListener("click", ()=>{execCmd("backColor")}); //Need to work on this. Will this come in the function through a form?
-buttonInsertImage.addEventListener("click", ()=>{execCmd("insertImage")}); //Need to work on this
-buttonSelectAll.addEventListener("click", ()=>{execCmd("selectAll")}); //Need to find icon for this
+buttonBold.addEventListener("click", ()=>{execCmd('bold', false, null)});
+buttonItalic.addEventListener("click", ()=>{execCmd('italic', false, null)});
+buttonUnderline.addEventListener("click", ()=>{execCmd('underline', false, null)});
+buttonStrikethrough.addEventListener("click", ()=>{execCmd('strikethrough', false, null)});
+buttonJustifyLeft.addEventListener("click", ()=>{execCmd('justifyLeft', false, null)});
+buttonJustifyCenter.addEventListener("click", ()=>{execCmd('justifyCenter', false, null)});
+buttonJustifyRight.addEventListener("click", ()=>{execCmd('justifyRight', false, null)});
+buttonJustifyFull.addEventListener("click", ()=>{execCmd('justifyFull', false, null)});
+buttonCut.addEventListener("click", ()=>{execCmd('cut', false, null)});
+buttonCopy.addEventListener("click", ()=>{execCmd('copy', false, null)});
+buttonPaste.addEventListener("click", ()=>{execCmd('paste', false, null)}); //This has a problem
+buttonIndent.addEventListener("click", ()=>{execCmd('indent', false, null)});
+buttonOutdent.addEventListener("click", ()=>{execCmd('outdent', false, null)});
+buttonSubscript.addEventListener("click", ()=>{execCmd('subscript', false, null)});
+buttonSuperscript.addEventListener("click", ()=>{execCmd('superscript', false, null)});
+buttonUndo.addEventListener("click", ()=>{execCmd('undo', false, null)});
+buttonRedo.addEventListener("click", ()=>{execCmd('redo', false, null)});
+buttonInsertUnorderedList.addEventListener("click", ()=>{execCmd('insertUnorderedList', false, null)});
+buttonInsertOrderedList.addEventListener("click", ()=>{execCmd('insertOrderedList', false, null)});
+buttonInsertParagraph.addEventListener("click", ()=>{execCmd('insertParagraph', false, null)});
+selectParagraphStyle.addEventListener("change", ()=>{execCmd('formatBlock', false, selectParagraphStyle[selectParagraphStyle.selectedIndex].getAttribute('value'))});
+buttonHorizontalRule.addEventListener("click", ()=>{execCmd('insertHorizontalRule'), false, null});
+buttonInsertLink.addEventListener("click", ()=>{execCmd("createLink", false, prompt('Please enter a URL', 'http://'))});
+buttonRemoveLink.addEventListener("click", ()=>{execCmd("unlink", false, null)});
+buttonInlineSourceCode.addEventListener("click", ()=>{execCmd("insertHTML", false, prompt('Please insert the raw html here', 'Example: <h1>writeIt rocks!</h1>'))});
+buttonSourceCode.addEventListener("click", ()=>{toggleSource()});
+buttonToggleEdit.addEventListener("click", ()=>{toggleEdit()})
+selectFontStyle.addEventListener("change", ()=>{execCmd("fontName", false, selectFontStyle[selectFontStyle.selectedIndex].getAttribute('value', 'value'))});
+selectFontSize.addEventListener("change", ()=>{execCmd("fontSize", false, selectFontSize[selectFontSize.selectedIndex].getAttribute('value'))});
+inputFontColor.addEventListener("change", ()=>{execCmd("foreColor", false, inputFontColor.setAttribute('value'))}); //Need to work on this. Will this come in the function through a form?
+inputBackgroundColor.addEventListener("change", ()=>{execCmd("backColor")}); //Need to work on this. Will this come in the function through a form?
+inputHighlightColor.addEventListener("change", ()=>{execCmd("hiliteColor")}); //need to work on this
+buttonInsertImage.addEventListener("click", ()=>{execCmd("insertImage", false, prompt('Please enter the image url', 'http://'))}); //Need to work on this. Look past project
+buttonInsertOnlineImage.addEventListener("click", ()=>{execCmd("insertImage", false, prompt('Please enter the image url', 'http://'))});
+buttonSelectAll.addEventListener("click", ()=>{execCmd("selectAll")});
 
 
 
@@ -94,26 +99,58 @@ function enableEditMode() {
 }
 
 //EXECCOMMAND - ALLOWS US TO RUN COMMANDS TO MANIPULATE THE CONTENTS OF THE EDITABLE REGION
-function execCmd(command) {
+function execCmd(command, bool, value) {
+  console.log(inputFontColor.getAttribute('value'));
   console.log(command);
-  richTextField.contentDocument.execCommand(command, false, null)
-}
-
-function execCmdArg(command, arg) {
-  console.log(arg);
-  // var value = this.getAttribute("value")
-  richTextField.contentDocument.execCommand(command, false, arg)
+  richTextField.contentDocument.execCommand(command, bool, value)
 }
 
 
 
+//SWITCH FROM TEXT EDITOR TO RAW HTML
+let showingSourceCode = false; //A variable that defines if the view should be turned on or off
+function toggleSource() {
+  if (showingSourceCode) {
+    richTextField.contentDocument.getElementsByTagName('body')[0].innerHTML = richTextField.contentDocument.getElementsByTagName('body')[0].textContent;
+    showingSourceCode = false;
+  }
+  else {
+    richTextField.contentDocument.getElementsByTagName('body')[0].textContent = richTextField.contentDocument.getElementsByTagName('body')[0].innerHTML;
+    showingSourceCode = true;
+  }
+}
+// The textContent property sets or returns the textual content of the specified node, and all its descendants.
+// If you set the textContent property, any child nodes are removed and replaced by a single Text node containing the specified string.
+
+
+
+//SWITCH EDITOR ON AND OFF
+let isInEditMode = true;
+function toggleEdit() {
+  if (isInEditMode) {
+    //Change the icon
+    toggleIcon.classList.add('fa-toggle-off');
+    toggleIcon.classList.remove('fa-toggle-on');
+    //switch off the editor
+    richTextField.contentDocument.designMode = "Off";
+    isInEditMode = false;
+  }
+  else {
+    //Change the icon
+    toggleIcon.classList.add('fa-toggle-on');
+    toggleIcon.classList.remove('fa-toggle-off');
+    //Switch on the editor
+    richTextField.contentDocument.designMode = "On";
+    isInEditMode = true;
+  }
+}
 
 
 //FUNCTION CALLS
 enableEditMode();
 
 
-} //End of window.onload
+// } //End of window.onload
 
 
 
